@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Laboration 3</title>
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="css/largeLogin.css">
+    <link rel="stylesheet" media="screen and (max-width: 900px)" href="css/smallLogin.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <form action="login.php" method="post">
+        <!--Vet ej varför denna måste vara här -->
+</head>
+
+<body>
+    <header>
+
+        <nav>
+
+
+            <div class="loginBox">
+                <p>FundManager</p>
+                <?php echo $message; ?>
+                <?php echo printErrorArray($errorArray); ?>
+                <h2>Login</h2>
+                <form>
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" name="login" value="Login">
+                    <input type="submit" name="subscribe" value="Sign up">
+                </form>
+                <p id="footer">Joakim Sjöquist - Projekt</p>
+            </div>
+
+        </nav>
+    </header>
+
+</body>
+
+</html>

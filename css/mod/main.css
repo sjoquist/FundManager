@@ -1,0 +1,863 @@
+:root {
+    --primary-color: rgb(26, 188, 156);
+    --primary-color-light: #baf7eb;
+    --button-color: #00A8FF;
+    --highcontrast: #0A0B12;
+    --highcontrast-lowOpacity: rgba(10, 11, 18, 0.5);
+    --lowcontrast: #333658;
+    --text-light: #baf7eb;
+    --text-dark: #0A0B12;
+    --box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+    --header-height: 70px;
+    --error: #ff246d;
+}
+
+p {
+    text-align: left;
+    margin: auto;
+}
+
+body {
+    font-family: acme-gothic, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding-top: 5%;
+    margin: 0;
+    min-width: auto;
+    text-align: center;
+    color: white;
+    /* background-color: #0b0e30; /* Dark Background */
+    background-image: linear-gradient(to bottom, var(--primary-color-light), var(--primary-color));
+    /* Light Background */
+    /* White Background*/
+}
+
+select {
+    cursor: pointer;
+    font-size: 0.8em;
+    color: black;
+    padding: 0;
+    border-radius: 0.3em;
+    border: 2px solid transparent;
+    height: 100%;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+}
+
+h3 {
+    color: rgb(77, 77, 95);
+    margin: 0;
+}
+
+h2 {
+    color: var(--highcontrast);
+    margin: 0;
+}
+
+/*
+.backgroundImage {
+    background: url("http://localhost/Project%20FundManager/pics/stockmarket.svg") no-repeat center;
+    background-size: 125%;
+    left: -10%;
+    top: 0%;
+    position: fixed;
+    z-index: 1;
+    width: 120%;
+    height: 125%;
+    filter: blur(5px);
+}
+*/
+
+.container {
+    z-index: 9998;
+    position: relative;
+    margin: 0 15% 0 15%;
+}
+
+.searchBar {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    margin-top: 80px;
+}
+
+.settings {
+    margin: auto;
+}
+
+.settingsMenu {
+    background-image: linear-gradient(to bottom, var(--lowcontrast), var(--highcontrast));
+    position: fixed;
+    top: 0%;
+    left: 90%;
+    height: 50%;
+    width: 10%;
+    z-index: 1;
+    border-radius: 10px;
+    display: none;
+}
+
+.settingsList {
+    margin-top: 60px;
+}
+
+.portfolioInfo {
+    display: grid;
+    grid-template-columns: 30% 30% auto;
+    grid-gap: 3%;
+    margin: 1% auto;
+}
+
+.userNameBar {
+    grid-template-columns: 100%;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 1px black;
+}
+
+.prices {
+    display: grid;
+    grid-template-areas: "open close" "price price" "current current" "tagAmnt tagTotpr" "amount totalprice" "buy sell"
+    /*"confirm confirm";*/
+    ;
+    grid-template-rows: 10% 35% 10% 10% 15% 20%;
+}
+
+.prices>#price {
+    grid-area: price;
+    color: var(--text-dark);
+    font-size: 5em;
+    margin: 5% auto;
+    padding: 15% 5%;
+}
+
+.prices>#currentHolding {
+    grid-area: current;
+    font-size: 1em;
+    text-align: left;
+    color: var(--lowcontrast);
+    margin: auto;
+}
+
+.prices>#open {
+    grid-area: open;
+    color: var(--text-dark);
+}
+
+.prices>#close {
+    grid-area: close;
+    color: var(--text-dark);
+}
+
+.prices>#tagAmount {
+    grid-area: tagAmnt;
+    color: var(--text-dark);
+    font-size: 1.3em;
+}
+
+.prices>#tagTotalPrice {
+    grid-area: tagTotpr;
+    color: var(--text-dark);
+    font-size: 1.3em;
+}
+
+.prices>#amount {
+    grid-area: amount;
+    margin: auto;
+    font-size: 1em;
+    border-radius: 10px;
+    padding-left: 1em;
+    width: 75%;
+}
+
+.prices>#totalPrice {
+    grid-area: totalprice;
+    margin: auto;
+    font-size: 1em;
+    border-radius: 10px;
+    padding: 0 1em;
+    width: 75%;
+}
+
+input[type="number"] {
+    border-radius: 10px;
+    border: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    height: 90%;
+    width: 90%;
+    text-decoration: none;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+}
+
+#dec-button {
+    left: 46px;
+    top: 20.5px;
+}
+
+#buy, #sell {
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    width: 60%;
+    transition: 0.1s ease-in-out;
+    background-color: var(--button-color);
+    margin: 10% auto;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+}
+
+.prices>#buy {
+    grid-area: buy;
+}
+
+.prices>#sell {
+    grid-area: sell;
+}
+
+.confirmTradeBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: var(--highcontrast-lowOpacity);
+    z-index: 99999;
+    display: block;
+}
+
+.confirmTrade {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: var(--highcontrast);
+    border: 1px solid #01a3a4;
+    padding: 5%;
+    z-index: 1;
+}
+
+#sell:hover, #buy:hover {
+    background-image: linear-gradient( to bottom, #90F7EC 100%, #32CCBC 100%);
+    color: var(--highcontrast);
+}
+
+/*
+
+.prices > #confirmAction{
+    grid-area: confirm;
+    color:var(--text-dark);
+    border: 2px solid var(--primary-color);
+    padding:1%;
+
+}
+*/
+
+.sChart {
+    display: grid;
+    grid-template-areas: "today week month 1y 5y" "chart chart chart chart chart";
+    grid-template-rows: 10% 90%;
+    padding: 0% 5%;
+}
+
+.sChart>#today {
+    grid-area: today;
+    color: var(--text-dark);
+}
+
+.sChart>#week {
+    grid-area: week;
+    color: var(--text-dark);
+}
+
+.sChart>#month {
+    grid-area: month;
+    color: var(--text-dark);
+}
+
+.sChart>#year {
+    grid-area: 1y;
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--text-dark);
+}
+
+.sChart>#five {
+    grid-area: 5y;
+    color: var(--text-dark);
+}
+
+.sChart>#stockChart1 {
+    grid-area: chart;
+}
+
+#exchangeAndTicker {
+    text-align: left;
+    padding: 2% 2% 0% 2%;
+    color: rgb(77, 77, 95);
+}
+
+.pieAndStats {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 5% auto;
+}
+
+.pieChart {
+    border-top: 0px solid #74baff88;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+}
+
+.errorBox {
+    background-color: #000619;
+    border: 1px solid #01a3a4;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.fundBox {
+    border: 0px solid black;
+    border-radius: 5px;
+    background-image: linear-gradient( to bottom, rgb(232, 253, 251) 100%, rgba(50, 204, 189, 0.397) 100%);
+    height: 100%;
+}
+
+.fundBoxTitle {
+    display: grid;
+    grid-template-columns: 230px auto 30% 30%;
+    color: #000619;
+    padding: 2% 2% 0% 2%;
+    vertical-align: bottom;
+}
+
+#companyName {
+    font-size: 2em;
+}
+
+#ceo {
+    text-align: left;
+    padding: 0;
+}
+
+#industry {
+    text-align: left;
+    padding: 0;
+}
+
+#name {
+    text-align: left;
+    padding: 0;
+}
+
+#name>p {
+    padding-bottom: 1%;
+}
+
+#industry>p {
+    padding-bottom: 1%;
+}
+
+#ceo>p {
+    padding-bottom: 1%;
+}
+
+.users {
+    margin: 0;
+    /*  margin:1% 0.5% 1% 0.5%;*/
+    border: 2px solid #74b9ff;
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: 5% 15% 60% 20%;
+    height: 80px;
+}
+
+.stockList {
+    display: grid;
+    grid-template-areas: "descr dImg";
+    grid-template-columns: 60% 40%;
+}
+
+.dImg {
+    grid-area: dImg;
+}
+
+.dText {
+    font-size: 1.2em;
+    color: rgb(77, 77, 95);
+}
+
+#description {
+    font-size: 1.5em;
+    color: var(--highcontrast);
+    grid-area: descr;
+}
+
+.stockListLarge {
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    grid-template-rows: auto auto;
+    padding: 0.2em;
+}
+
+.sll_Percentage {
+    padding: 5%;
+    border: none;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 10px black;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 3px solid transparent;
+}
+
+.sll_Percentage:hover {
+    border: 3px solid white;
+}
+
+.sll_Percentage:active {
+    border: 3px solid white;
+}
+
+#total {
+    background-color: var(--primary-color);
+}
+
+.sll_Name {
+    font-size: 1em;
+    margin: 5%;
+    padding: 1em;
+    border-right: 2px solid #01a3a4;
+}
+
+.sll_Value {
+    font-size: 1.5em;
+    padding: 1em;
+    border: 0px solid #01a3a4;
+}
+
+.stocks {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    height: 100%;
+    width: 100%;
+    animation: loadStocks 0.7s ease-in-out;
+}
+
+@keyframes loadStocks {
+    from {
+        width: 0%;
+        color: transparent;
+    }
+    to {
+        width: 100%;
+        color: white;
+    }
+}
+
+.stockItem {
+    text-align: center;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 0.1em;
+    transition: 0.1s ease-in-out;
+}
+
+.stockItem:hover {
+    border: 2px solid #01a3a4;
+}
+
+.siteItem {
+    margin: 0;
+    background-color: transparent;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em;
+}
+
+.userName {
+    text-align: left;
+    font-size: 1em;
+    padding-top: 10%;
+}
+
+#startCapitalInput {
+    height: 2em;
+    width: 40%;
+    border: 2px solid #74baff88;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+input[type="text"] {
+    border-radius: 10px;
+    border: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    height: 90%;
+    width: 90%;
+    text-decoration: none;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+input[name="startCapitalInput"] {
+    display: inline-block;
+    width: 20%;
+    height: 10%;
+    padding: 1%;
+    border: 1px solid black;
+}
+
+input[name="setCapital"] {
+    display: inline-block;
+    width: 20%;
+    height: 10%;
+    padding: 1%;
+}
+
+input[name="logout"] {
+    border: 2px solid #ff246d;
+}
+
+input[name="logout"]:hover {
+    background-color: #ff246d;
+    color: white;
+}
+
+.btn {
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    width: 60%;
+    transition: 0.1s ease-in-out;
+    background-color: var(--button-color);
+    margin: 10% auto;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+}
+
+.resultBox {
+    position: relative;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5%;
+    grid-column: 2/3;
+    animation: panUp 1s ease-in-out;
+}
+
+#number1:focus {
+    background-color: rgba(134, 65, 0, 0.8);
+}
+
+/*Search-results from API */
+
+.searchResult {
+    margin-bottom: 5%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid black;
+}
+
+.sideBar {
+    margin-left: auto;
+    min-height: 385px;
+    max-height: 385px;
+    max-width: 200px;
+    min-width: 200px;
+    border-radius: 5px;
+    background-color: #cdd1c5;
+}
+
+div[id="capitalPortfolio"], div[id="capitalTrading"], div[id="capitalTotal"] {
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    background-color: white;
+    margin: 0;
+    border-radius: 10px;
+    padding: 6%;
+}
+
+h1 {
+    color: #0B0E30;
+}
+
+input:focus {
+    text-decoration: none;
+    border: none;
+    box-shadow: 1px 1px 10px grey;
+}
+
+.totalValue {
+    font-size: 1em;
+}
+
+/* HEADER SECTION */
+
+label {
+    cursor: pointer;
+}
+
+.header {
+    z-index: 9999;
+    position: fixed;
+    display: grid;
+    width: 100%;
+    top: 0%;
+    grid-template-columns: 185px auto 10% 5% 5%;
+    background-color: white;
+    padding: 0;
+    max-height: 70px;
+    box-shadow: var(--box-shadow);
+}
+
+/* HEADER SECTION - NAME */
+
+.headerUserBox {
+    text-align: right;
+    margin: 11px 0 11px 0;
+    padding: 0;
+}
+
+/* HEADER SECTION - LOGO */
+
+.logo {
+    margin: 7% 0% 5% 0%;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    max-height: 50px;
+    width: 185px;
+}
+
+/* HEADER SECTION - LOGO */
+
+#logoName {
+    font-size: 2em;
+    color: var(--primary-color);
+    text-align: left;
+    margin: 11px 0 11px 0;
+}
+
+.digit {
+    grid-area: digit;
+    text-align: left;
+    margin: auto;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+.sidebarImg {
+    grid-area: image;
+}
+
+.sidebarItem {
+    grid-area: text;
+    background-color: transparent;
+    border: 3px solid transparent;
+    color: #f0f3f7;
+    text-align: right;
+    margin: auto;
+    padding: 0;
+    margin-right: 3%;
+    font-size: 1.1em;
+    font-family: Bahnschrift, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 0.2em;
+}
+
+.sbNum:hover {
+    background-color: var(--primary-color-light);
+    color: #14223b;
+}
+
+.sbNum:hover>.sidebarItem {
+    color: #14223b;
+}
+
+.sidebarItem:active {
+    transition: 0s ease-in-out;
+    border: 3px solid #14223b;
+}
+
+.sbNum {
+    display: grid;
+    cursor: pointer;
+    grid-template-areas: "image image" "digit text";
+    grid-template-rows: 70% 30%;
+    grid-template-columns: 10% 90%;
+    color: #8df8bd;
+    transition: 0.2s ease-in-out;
+    font-family: Bahnschrift, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    transition: 0.1s ease-in-out;
+    border: 3px solid transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.homepage {
+    margin: 11px 0 11px 0;
+    max-height: 50px;
+}
+
+/* HEADER SECTION - IMAGE */
+
+.profilePicture {
+    margin: auto;
+}
+
+.newSidebar {
+    background-image: linear-gradient(to bottom, var(--lowcontrast), var(--highcontrast));
+    position: fixed;
+    top: 0%;
+    height: 100%;
+    width: 185px;
+    z-index: 3;
+}
+
+.dropSideBar {
+    position: inherit;
+    width: 185px;
+    height: 20px;
+    top: 100%;
+    border: 3px solid black;
+}
+
+#sideBar {
+    margin-top: 70px;
+    z-index: 9999;
+}
+
+.footer {
+    position: relative;
+    z-index: 9999;
+    text-align: center;
+    padding: 2%;
+    margin: 4% auto;
+}
+
+.griditem {
+    color: white;
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/*SearchButton*/
+
+canvas[id="myPieChart"] {
+    max-width: 600px !important;
+    max-height: 600px !important;
+}
+
+canvas[id="stockchar1"] {
+    max-width: 1000px !important;
+    max-height: 300px !important;
+}
+
+input[name="searchButton"] {
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    height: 50px;
+    width: 60%;
+    transition: 0.1s ease-in-out;
+    background-color: var(--button-color);
+    margin: 0;
+    box-shadow: 0px 3px 6px rgba(128, 128, 128, 0.233);
+}
+
+input[name="searchButton"]:hover {
+    border: 2px solid white;
+}
+
+#lCont, #rCont {
+    visibility: hidden;
+}
+
+/*ButtonGridBox*/
+
+#srchGrid {
+    padding: 15% 5% 15% 5%;
+    border: none;
+    background: transparent;
+}
+
+#headerText {
+    text-align: left;
+    font-size: 0.7em;
+    font-weight: normal;
+    text-shadow: 1px 1px 10px black;
+    background: transparent;
+    border: none;
+}
+
+li {
+    list-style: none;
+    padding: 1%;
+    color: white;
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+ul {
+    margin: 5% auto;
+    padding: 0;
+    height: 100%;
+    border-radius: 5%;
+}
+
+.listName {
+    background-color: rgba(128, 128, 128, 0.3);
+    margin: 5% 5% 0% 5%;
+    border: 3px solid transparent;
+}
+
+.listPercentage {
+    background-color: rgba(128, 128, 128, 0.15);
+    border: none;
+    margin: 0% 5% 5% 5%;
+}
+
+.listName:hover {
+    border: 3px solid white;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid var(--primary-color);
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 25% auto;
+    animation: spin 1.5s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

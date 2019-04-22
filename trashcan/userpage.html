@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" media="screen and (min-width: 1000px)" href="css/user/main.css">
+    <link rel="stylesheet" media="screen and (max-width: 1000px)" href="css/user/smallMain.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>Fund Manager Home</title>
+</head>
+<body>
+        <div class="header">
+        
+            <div class="griditem"></div>
+            <div class="griditem" id="headerText">
+                <h1>FundManager</h1>
+            </div>
+        
+            <div class="griditem">
+                <input type="text" placeholder="Ticker Symbol.." id="searchField">
+            </div>
+            <div class="griditem">
+                <button type="button" class="btn" id="searchButton">Search</button>
+            </div>
+        
+            <div class="griditem">LogOut</div>
+        </div>
+
+
+        <div class="userNameBar">
+            <h1>Jonas Ewenfält</h1>
+        
+        </div>
+
+        <div class="container">
+
+            <div class="griditem"></div>
+            <div class="sideBar">
+                <ul>
+                    <li><a href="http://localhost/Project%20FundManager/userpage.html">My page</a></li>
+                    <li><a href="http://localhost/Project%20FundManager/index.html">My fund</a></li>
+                    <li><a>Settings</a></li>
+                    <li><a>About</a></li>
+                    <li><a href="http://localhost/Project%20FundManager/login.html">Log Out</a></li>
+                </ul>
+            
+            </div>
+            <div class="fundBox">
+                <div class="fundBoxTitle">
+                    <h2 class="siteItem" id="fundNameTitle">Stocks</h2>
+                    <h2 id="userNameTitle">Current Portfolio Value</h2>
+                    <h2 id="totalValueTitle">Current Capital</h2>
+                </div>
+
+                <section>
+                    <div class="userInfo">
+                        <div class="stockName">
+                            Apple
+                        </div>
+                        <div class="privateStocks">
+                            <p class="stockItem">STK</p>
+                            <p class="rest">Rest</p>
+                        </div>
+                        <div class="buySellButton">
+                            <input type="button" name="buyStock" value="Buy Stock">
+                            <input type="button" name="sellStock" value="Sell Stock">
+                        </div>
+                    </div>
+                    <div class="userInfo">
+                        <div class="stockName">
+                            Apple
+                        </div>
+                        <div class="privateStocks">
+                            <p class="stockItem">STK</p>
+                            <p class="rest">Rest</p>
+                        </div>
+                        <div class="buySellButton">
+                            <input type="button" name="buyStock" value="Buy Stock">
+                            <input type="button" name="sellStock" value="Sell Stock">
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <div class="griditem"></div>
+
+
+        </div>
+
+</body>
+</html>
