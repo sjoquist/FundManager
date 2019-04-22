@@ -1,8 +1,8 @@
 # fundmanager
-Online stockmarket simulation.
+FundManager, an online stockmarket simulation.
 
-Start by making an account and set your start trading capital.
+1. Start by making an account and set your start trading capital.
 
-Afterwards, search for the stock which you're interrested in purchasing.
+2. Search for the stock which you're interrested in purchasing.
 
-Buy, watch them grow, and sell!
+3. Buy, watch them grow, and sell!
