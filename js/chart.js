@@ -9,14 +9,14 @@ var globalAmount = [];
 var globalCompany = [];
 var globalValue = [];
 var globalColors = [
-    'rgba(255, 99, 132, 1)',
-    'rgba(54, 162, 235, 1)',
-    'rgba(255, 206, 86, 1)',
-    'rgba(75, 192, 192, 1)',
-    'rgba(155, 89, 182,1.0)',
-    'rgba(230, 126, 34,1.0)',
-    'rgba(26, 188, 156,1.0)',
-    'rgba(44, 62, 80,1.0)'
+    'rgba(255, 99, 132,1)',
+    'rgba(54, 162, 235,1)',
+    'rgba(255, 206, 86,1)',
+    'rgba(75, 192, 192,1)',
+    'rgba(155, 89, 182,1)',
+    'rgba(230, 126, 34,1)',
+    'rgba(26, 188, 156,1)',
+    'rgba(44, 62, 80,1)'
 ]
 
 var globalBorder = [
@@ -115,43 +115,53 @@ function calculatePortfolio(userArray){
         data: {sendPort: portfolioValue},
         method:'POST'
     })
-    writeChart();
     updateStockList();
+    writeChart();
 } 
 
 function updateStockList(){
     console.log("Stocklist Info");
-    console.log(globalPortfolio);
-    console.log(globalValue);
-    console.log(globalAmount);
-    console.log(globalCompany);
+    console.log("portfolio " + globalPortfolio);
+    console.log("value " + globalValue);
+    console.log("amount " + globalAmount);
+    console.log("name " + globalCompany);
     var list = [];
     for (var j = 0; j < globalCompany.length; j++){
-
+        console.log("Division: " + (globalValue[j]/ globalPortfolio));
+        var listPercentage = (globalValue[j]/ globalPortfolio);
+        listPercentage = (listPercentage*100).toFixed(2);
+        console.log(listPercentage);
         list.push({
             'ticker': globalCompany[j], 
             'value': globalValue[j], 
-            'amount': globalAmount[j]
+            'amount': globalAmount[j],
+            'percentage': listPercentage,
+            'color' : globalColors[j]
         });
     } 
-
-    for(var i=0; i<globalCompany.length; i++){
-        //("#stockList").
-        console.log("List" + list.ticker[i] + " " + list.value[i]);    
-    }
-
-    list.sort(function(a, b) {
-        return ((a.value < b.value) ? -1 : ((a.value == b.value) ? 0 : 1));
-        //Sort could be modified to, for example, sort on the age 
-        // if the name is the same.
-    });
-
-
     
-    for(var i=0; i<globalCompany.length; i++){
-        //("#stockList").
-        console.log("List" + list.ticker[i] + " " + list.value[i]);    
+    list = sortByKey(list,'value');
+    console.log(list[0].percentage);
+    for(var i=0; i<list.length; i++){
+        var bg = list[i].color.slice(0, list[i].color.length-2)+ "0.5)";
+        console.log(bg);
+        $("#stockList").append("<li class='listName' style='text-shadow:var(--box-shadow); background-color:"+ list[i].color+";'>" + list[i].ticker+ "</li>");
+        $("#stockList").append("<li class='listPercentage' style='text-shadow:var(--box-shadow); background-color:"+ bg+";'>$"+  list[i].value + " ( " + list[i].percentage+ "% )</li>");
+        $("#stockRows").append(
+        "<div class='stockListLarge'>"+
+            "<div class='sll_Name' style='border-right:5px solid "+list[i].color+ ";'>" + list[i].ticker +"</div>"+
+            "<div class='sll_Percentage' style='width:"+ list[i].percentage +"%; background-color:" +list[i].color + ";'>" + list[i].percentage + "%</div>"+
+            "<div class='sll_Value'> $"+list[i].value+"</div>"+
+        "</div>");
     }
+
+}
+
+function sortByKey(array, key) {
+    return array.sort(function(a, b) {
+        var x = a[key]; var y = b[key];
+        return y-x;
+    });
 }
 
 function writeChart(){
@@ -232,9 +242,9 @@ function writeChart(){
             elements: {
                 center: {
                     text: "$" + total,
-                    color: '#1ABC9C', //Default black
+                    color: '', //Default black
                     fontStyle: 'Acme Gothic', //Default Arial
-                    sidePadding: 10 //Default 20 (as a percentage)
+                    sidePadding: 20 //Default 20 (as a percentage)
                 }
             }
         }

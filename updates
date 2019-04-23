@@ -3,4 +3,7 @@
 
 
 #22/04/2019
-  Added functions that calculate the current portolio value, and show them on homepage.
+	Added functions that calculate the current portolio value, and show them on homepage.
+
+#23/04/2019
+	Fixed stocklist with correct percentages and values.

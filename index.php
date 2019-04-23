@@ -177,63 +177,21 @@
                     </div>
                     <div class="stockListDiv"> 
                         <ul id="stockList">
-                            <li class="listName" style="background-color: rgba(255, 99, 132, 0.8);">Apple</li>
-                            <li class="listPercentage" style="background-color: rgba(255, 99, 132, 0.2);" >$9000 (45%)</li>
-                            <li class="listName" style="background-color: rgba(54, 162, 235, 0.8);" >Google</li>
-                            <li class="listPercentage" style="background-color: rgba(54, 162, 235, 0.2);" >$7000 (35%)</li>
-                            <li class="listName" style="background-color: rgba(255, 206, 86, 0.8);" >Facebook</li>
-                            <li class="listPercentage" style="background-color: rgba(255, 206, 86, 0.2);" >$3000 (15%)</li>
-                            <li class="listName" style="background-color: rgba(75, 192, 192, 0.8);" >H&M</li>
-                            <li class="listPercentage" style="background-color: rgba(75, 192, 192, 0.2);" >$1000 (5%)</li>
-                            <?php //getUserStocks(); ?>
+                            
+                            
                         </ul>
                     </div>
 
                 </section>
-                    <script>
-       
-        calculatePortfolio(<?php echo json_encode($userArray); ?>); 
-
-    </script>
                 <?php printErrorMessage($_SESSION['error']); ?>
-                <section style="">
-                Set start capital: <input type="text" placeholder="$USD" name="startCapitalInput"style="color:black;">
-                <input type="submit" name="setCapital" value="Apply">
-                </section>
-                <section style="padding:5% 0% 5% 0%;">
-        
-                    <div class="stockListLarge" id="AAPL">
-                        <div class="sll_Name" style="border-right:5px solid rgba(255, 99, 132, 0.8);">Apple</div>
-                        <div class="sll_Percentage" id="total" style="width:45%;background-color: rgba(255, 99, 132, 1); ">45%</div>
-                        <div class="sll_Value">$9000</div>
-                        <div class="stats" style="display:none;"><ul>
-                        <li>Week</li>
-                        <li>Month</li>
-                        <li style="color:#00fe93;">Year</li>
-                        </ul></div>
-                        <div class="stats" style="display:none; padding-top:1%; "><canvas id="stockChart1" ><script src="js/stockchart.js"></script></h1></div>
-                        <div class="stats" style="display:none;">Stats</div>
+                <section style="padding:5% 0% 5% 0%;" >
+                <div class="" id="stockRows">
                     </div>
-
-                    
-                    <div class="stockListLarge">
-                        <div class="sll_Name"style="border-right:5px solid rgba(54, 162, 235, 0.8);">Google</div>
-                        <div class="sll_Percentage" style="width:35%;background-color: rgba(54, 162, 235, 1);">35%</div>
-                        <div class="sll_Value">$7000</div>
-                        <div class="stats" style="display:none;">Stats</div>
-                        <div class="stats" style="display:none;"> GRAPH</div>
-                        <div class="stats" style="display:none;">Stats</div>
-                    </div>
-
-                    
-                    <div class="stockListLarge">
-                        <div class="sll_Name"style="border-right:5px solid  rgba(255, 206, 86, 0.8);">Facebook</div>
-                        <div class="sll_Percentage" id="total2" style="width:15%;background-color:  rgba(255, 206, 86, 1);">15%</div>
-                        <div class="sll_Value">$3000</div>
-                        <div class="stats" style="display:none;">Stats</div>
-                        <div class="stats" style="display:none;"><h1 style="padding:5%;">GRAPH</h1></div>
-                        <div class="stats" style="display:none;">Stats</div>
-                    </div>
+                   
+                <script>
+                    calculatePortfolio(<?php echo json_encode($userArray); ?>); 
+                </script>
+                <!--
                     <div class="stockListLarge">
                         <div class="sll_Name"style="border-right:5px solid rgba(75, 192, 192, 0.8);">H&M</div>
                         <div class="sll_Percentage" id="total3" style="width:5%; background-color:rgba(75, 192, 192, 1);">5%</div>
@@ -242,7 +200,7 @@
                         <div class="stats" style="display:none;"><h1 style="padding:5%;">GRAPH</h1></div>
                         <div class="stats" style="display:none;">Stats</div>
                     </div>                        
-                
+                -->
                 </section>
                 
             </div>
